@@ -20,12 +20,6 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    public User(Long id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
     public User() {
     }
 
@@ -36,6 +30,10 @@ public class User {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {

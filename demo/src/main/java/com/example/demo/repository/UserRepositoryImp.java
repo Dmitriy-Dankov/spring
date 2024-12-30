@@ -36,7 +36,7 @@ public class UserRepositoryImp implements UserRepository {
 
     @Transactional
     @Override
-    public void updateUser(Long id, User newUser) {
-        em.merge(new User(id, newUser.getFirstName(), newUser.getLastName()));
+    public void updateUser(User newUser) {
+        em.merge(newUser);
     }
 }

@@ -32,16 +32,16 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String updateUsers(@RequestParam("id") Long id, @ModelAttribute("user") User user) {
-        if (id < 1) {
+    public String updateUsers(@ModelAttribute("user") User user) {
+        if (user.getId() < 1) {
             return "redirect:/users";
         }
-        userService.updateUser(id, user);
+        userService.updateUser(user);
         return "redirect:/users";
     }
 
     @PostMapping("/remove")
-    public String removeUsers(@ModelAttribute("id") Long id) {
+    public String removeUsers(@RequestParam("id") Long id) {
         if (id < 1) {
             return "redirect:/users";
         }
