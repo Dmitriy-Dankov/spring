@@ -20,13 +20,13 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
+    public User() {
+    }
+
     public User(Long id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public User() {
     }
 
     public User(String firstName, String lastName) {
