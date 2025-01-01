@@ -1,7 +1,5 @@
 package com.example.demo.controllers;
 
-import java.util.ArrayList;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +19,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    public static ArrayList<User> users = new ArrayList<>();
-    public static boolean bl = true;
-
     @GetMapping
     public String getAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
@@ -38,16 +33,16 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String updateUser(@RequestParam("id") Long id, @ModelAttribute("user") User user) {
-        if (id < 1) {
+    public String updateUsers(@ModelAttribute("user") User user) {
+        if (user.getId() < 1) {
             return "redirect:/users";
         }
-        userService.updateUser(id, user);
+        userService.updateUser(user);
         return "redirect:/users";
     }
 
     @PostMapping("/remove")
-    public String removeUser(@ModelAttribute("id") Long id) {
+    public String removeUsers(@RequestParam("id") Long id) {
         if (id < 1) {
             return "redirect:/users";
         }
